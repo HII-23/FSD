@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>📚 M.Sc (CS) Semester-II Syllabus</h2>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Topics</th>
+        </tr>
+        <tr ng-repeat="subject in subjects">
+            <td>{{ subject.name }}</td>
+            <td>
+                <ul>
+                    <li ng-repeat="topic in subject.topics">{{ topic }}</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS ng-click Alert Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn-blue {
+            background-color: #2196F3;
+        }
+        .btn-red {
+            background-color: #f44336;
+        }
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body ng-app="alertApp">
+    <div ng-controller="AlertController">
+        <h1>AngularJS ng-click Alert Example</h1>
+        
+        <div class="container">
+            <!-- Basic button with simple alert -->
+            <button class="btn" ng-click="showAlert('Hello! This is a simple alert message.')">
+                Show Simple Alert
+            </button>
+            
+            <!-- Button with custom message from scope -->
+            <button class="btn btn-blue" ng-click="showAlert(customMessage)">
+                Show Custom Message
+            </button>
+            
+            <!-- Button with function that returns different messages -->
+            <button class="btn btn-red" ng-click="showDynamicAlert()">
+                Show Dynamic Alert
+            </button>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('alertApp', []);
+        
+        app.controller('AlertController', function($scope) {
+            // Custom message in the scope
+            $scope.customMessage = "This message is stored in the Angular scope!";
+            
+            // Counter for dynamic messages
+            $scope.clickCount = 0;
+            
+            // Simple function to show alert with the provided message
+            $scope.showAlert = function(message) {
+                alert(message);
+            };
+            
+            // Function that generates different messages based on click count
+            $scope.showDynamicAlert = function() {
+                $scope.clickCount++;
+                
+                if ($scope.clickCount === 1) {
+                    alert("This is your first click!");
+                } else if ($scope.clickCount === 5) {
+                    alert("Wow! You've clicked 5 times!");
+                } else {
+                    alert("You've clicked " + $scope.clickCount + " times!");
+                }
+            };
+        });
+    </script>
+</body>
+</html>

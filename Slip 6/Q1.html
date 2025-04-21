@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS ng-click Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+    <h2>Click the button to see an alert</h2>
+
+    <button ng-click="showAlert()">Click Me</button>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function($scope) {
+            $scope.showAlert = function() {
+                alert("Button Clicked! This is an AngularJS Alert.");
+            };
+        });
+    </script>
+
+</body>
+</html>

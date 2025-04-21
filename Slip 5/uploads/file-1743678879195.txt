@@ -1,0 +1,25 @@
+FDS 
+
+Cancel Slips
+Slip 3
+Slip 4
+Slip 16
+Slip 24
+
+repeted Slips
+slip 14
+Slip 22
+
+Repeated Questions
+
+Q. Create a Node.js file that opens the requested file and returns the content to the client. If 
+anything goes wrong, throw a 404 error. 
+----->  slip-6-Q2, Slip-9-Q2
+
+Q. Create an HTML form that contain the Student Registration details and write a JavaScript to 
+validate Student first and last name as it should not contain other than alphabets and age should 
+be between 18 to 50.
+----->  Slip-1-Q2, Slip-13-Q2
+
+
+

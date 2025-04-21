@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Date & Time using $interval</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        h2 { color: #333; }
+        p { font-size: 20px; font-weight: bold; color: #007BFF; }
+    </style>
+</head>
+<body ng-app="TimeApp" ng-controller="TimeController">
+
+    <h2>Current Date and Time</h2>
+    <p>{{ currentTime }}</p>
+
+    <script>
+        var app = angular.module("TimeApp", []);
+        app.controller("TimeController", function($scope, $interval) {
+            $scope.updateTime = function() {
+                $scope.currentTime = new Date().toLocaleString();
+            };
+
+            // Update time every second
+            $interval($scope.updateTime, 1000);
+
+            // Initialize the time on page load
+            $scope.updateTime();
+        });
+    </script>
+
+</body>
+</html>

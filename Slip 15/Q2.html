@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="employeeForm" onsubmit="return validateForm()">
+        <h2>Employee Registration</h2>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email ID:</label>
+        <input type="text" id="email" name="email">
+        <div class="error" id="emailError"></div>
+
+        <label for="mobile">Mobile No.:</label>
+        <input type="text" id="mobile" name="mobile">
+        <div class="error" id="mobileError"></div>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department">
+            <option value="">Select Department</option>
+            <option value="HR">HR</option>
+            <option value="IT">IT</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+        <div class="error" id="departmentError"></div>
+
+        <label for="joiningDate">Joining Date:</label>
+        <input type="date" id="joiningDate" name="joiningDate">
+        <div class="error" id="joiningDateError"></div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Regular Expressions
+            let namePattern = /^[A-Za-z\s]+$/; // Only alphabets and spaces
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let mobilePattern = /^[6-9]\d{9}$/; // 10-digit mobile number starting with 6-9
+
+            // Get form values
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let department = document.getElementById("department").value.trim();
+            let joiningDate = document.getElementById("joiningDate").value.trim();
+            let today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
+            // Clear previous errors
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("mobileError").innerText = "";
+            document.getElementById("departmentError").innerText = "";
+            document.getElementById("joiningDateError").innerText = "";
+
+            // Name Validation
+            if (!namePattern.test(name)) {
+                document.getElementById("nameError").innerText = "Enter a valid name (only alphabets).";
+                isValid = false;
+            }
+
+            // Email Validation
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Enter a valid email address.";
+                isValid = false;
+            }
+
+            // Mobile Number Validation
+            if (!mobilePattern.test(mobile)) {
+                document.getElementById("mobileError").innerText = "Enter a valid 10-digit mobile number.";
+                isValid = false;
+            }
+
+            // Department Validation
+            if (department === "") {
+                document.getElementById("departmentError").innerText = "Please select a department.";
+                isValid = false;
+            }
+
+            // Joining Date Validation
+            if (joiningDate === "" || joiningDate > today) {
+                document.getElementById("joiningDateError").innerText = "Joining date cannot be in the future.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

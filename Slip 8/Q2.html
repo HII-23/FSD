@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body ng-app="studentApp" ng-controller="StudentController">
+
+    <h2>Student Details</h2>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>City</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.grade }}</td>
+            <td>{{ student.city }}</td>
+        </tr>
+    </table>
+
+    <script>
+        var app = angular.module('studentApp', []);
+        app.controller('StudentController', function($scope) {
+            $scope.students = [
+                { id: 1, name: 'Amit', age: 18, grade: 'A', city: 'Mumbai' },
+                { id: 2, name: 'Priya', age: 19, grade: 'B', city: 'Pune' },
+                { id: 3, name: 'Rahul', age: 18, grade: 'A', city: 'Delhi' },
+                { id: 4, name: 'Sneha', age: 20, grade: 'C', city: 'Bangalore' },
+                { id: 5, name: 'Vikram', age: 21, grade: 'B', city: 'Hyderabad' },
+                { id: 6, name: 'Neha', age: 22, grade: 'A', city: 'Chennai' },
+                { id: 7, name: 'Rohit', age: 20, grade: 'B', city: 'Kolkata' },
+                { id: 8, name: 'Swati', age: 19, grade: 'C', city: 'Jaipur' },
+                { id: 9, name: 'Kunal', age: 18, grade: 'A', city: 'Lucknow' },
+                { id: 10, name: 'Megha', age: 21, grade: 'B', city: 'Ahmedabad' }
+            ];
+        });
+    </script>
+
+</body>
+</html>

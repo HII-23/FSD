@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <h2>Student Registration</h2>
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName">
+        <div class="error" id="firstNameError"></div>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName">
+        <div class="error" id="lastNameError"></div>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+        <div class="error" id="ageError"></div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Regular Expressions
+            let namePattern = /^[A-Za-z]+$/; // Only alphabets
+            let agePattern = /^(1[89]|[2-4][0-9]|50)$/; // Age between 18-50
+
+            // Get form values
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let age = document.getElementById("age").value.trim();
+
+            // Clear previous errors
+            document.getElementById("firstNameError").innerText = "";
+            document.getElementById("lastNameError").innerText = "";
+            document.getElementById("ageError").innerText = "";
+
+            // First Name Validation
+            if (!namePattern.test(firstName)) {
+                document.getElementById("firstNameError").innerText = "Enter a valid first name (only alphabets).";
+                isValid = false;
+            }
+
+            // Last Name Validation
+            if (!namePattern.test(lastName)) {
+                document.getElementById("lastNameError").innerText = "Enter a valid last name (only alphabets).";
+                isValid = false;
+            }
+
+            // Age Validation
+            if (!agePattern.test(age)) {
+                document.getElementById("ageError").innerText = "Enter a valid age (between 18-50).";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

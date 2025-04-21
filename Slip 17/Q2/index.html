@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-app="studentApp" ng-controller="StudentController">
+
+    <h1>Student Details</h1>
+
+    <table>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>City</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td>{{ student.rollNo }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.city }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

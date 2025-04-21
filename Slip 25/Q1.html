@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="locationApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Page Location</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="LocationController">
+
+    <h2>Current Page Location</h2>
+    <p><strong>Full URL:</strong> {{ currentUrl }}</p>
+    <p><strong>Protocol:</strong> {{ protocol }}</p>
+    <p><strong>Host:</strong> {{ host }}</p>
+    <p><strong>Path:</strong> {{ path }}</p>
+
+    <script>
+        var app = angular.module("locationApp", []);
+
+        app.controller("LocationController", function($scope, $location) {
+            $scope.currentUrl = $location.absUrl();  // Get full URL
+            $scope.protocol = $location.protocol();  // Get protocol (http/https)
+            $scope.host = $location.host();          // Get host (domain)
+            
+            // ✅ Correct way to get path
+            $scope.path = window.location.pathname;  
+        });
+    </script>
+
+</body>
+</html>
